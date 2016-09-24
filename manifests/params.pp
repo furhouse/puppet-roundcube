@@ -15,6 +15,12 @@ class roundcube::params {
   $package_dir = '/var/cache/puppet/archives'
   $install_dir = '/opt'
 
+  $dir_dependencies = [ '/var/cache/puppet', $package_dir, $install_dir  ]
+
+  file { $dir_dependencies:
+    ensure => directory,
+  }
+
   $document_root_manage = true
   $document_root = '/var/www/roundcubemail'
   $process = 'www-data'
